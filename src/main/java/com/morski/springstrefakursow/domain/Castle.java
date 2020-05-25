@@ -22,4 +22,9 @@ public class Castle {
     public void tearDown() {
         System.out.println("Zaraz wyburzumy zamek: " + name);
     }
+
+    @Override
+    public String toString() {
+        return "Znajduje sie tu zamek o nazwie: " + this.name;
+    }
 }
