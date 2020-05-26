@@ -1,5 +1,6 @@
 package com.morski.springstrefakursow.domain;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +11,7 @@ public class Knight {
     private String name = "Lancelot";
 
     private int age = 30;
-    //private Quest quest;
+    private Quest quest;
 
     /*public Knight(String name, int age) {
         this.name = name;
@@ -25,13 +26,14 @@ public class Knight {
     }
 */
 
-/*
+    @Autowired
     public void setQuest(Quest quest) {
+        System.out.println("Wstawiam zadanie dla rycerza");
         this.quest = quest;
     }
-*/
+
     @Override
     public String toString() {
-        return "Rycerz o imieniu " + name + " (" + age + ")." /*Zadanie: " + quest*/;
+        return "Rycerz o imieniu " + name + " (" + age + "). Zadanie: " + quest;
     }
 }
