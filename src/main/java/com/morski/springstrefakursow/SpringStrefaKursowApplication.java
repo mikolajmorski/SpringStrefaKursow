@@ -4,12 +4,14 @@ package com.morski.springstrefakursow;
 import com.morski.springstrefakursow.domain.Castle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
-@ComponentScan({"com.morski.springstrefakursow", "com.morski.component"})
+@ImportResource("classpath:config/spring-config.xml")
 public class SpringStrefaKursowApplication {
 
 

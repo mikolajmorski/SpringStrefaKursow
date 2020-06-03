@@ -4,29 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
 public class Knight {
 
 
-    private String name = "Lancelot";
+    private String name ;
 
-    private int age = 30;
+    private int age ;
     private Quest quest;
 
-    /*public Knight(String name, int age) {
-        this.name = name;
+    public Knight( String name, int age) {
         this.age = age;
-    }*/
-
-/*
-    public Knight(String name, int age, Quest quest) {
         this.name = name;
-        this.age = age;
-        this.quest = quest;
     }
-*/
 
-    @Autowired
     public void setQuest(Quest quest) {
         System.out.println("Wstawiam zadanie dla rycerza");
         this.quest = quest;
