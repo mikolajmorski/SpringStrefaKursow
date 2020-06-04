@@ -7,11 +7,18 @@
         <context:component-scan base-package="com.morski.springstrefakursow"></context:component-scan>
         <import resource="classpath:config/castle-config.xml"/>
 
-    <bean id="quest" class="com.morski.springstrefakursow.domain.Quest"></bean>
-    <bean id="knight" class="com.morski.springstrefakursow.domain.Knight"
+    <bean id="quest" class="com.morski.springstrefakursow.domain.Quest" scope="prototype"></bean>
+    <bean id="lancelot" class="com.morski.springstrefakursow.domain.Knight" primary="true"
         scope="prototype">
         <constructor-arg index="0" value="Lancelot"/>
         <constructor-arg index="1" value="30"/>
+        <property name="quest" ref="quest"/>
+    </bean>
+
+    <bean id="percival" class="com.morski.springstrefakursow.domain.Knight"
+          scope="prototype">
+        <constructor-arg index="0" value="Percival"/>
+        <constructor-arg index="1" value="25"/>
         <property name="quest" ref="quest"/>
     </bean>
 

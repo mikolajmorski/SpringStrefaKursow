@@ -4,30 +4,34 @@ import com.morski.springstrefakursow.domain.Castle;
 import com.morski.springstrefakursow.domain.Knight;
 import com.morski.springstrefakursow.domain.Quest;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 
 @Configuration
 //@ImportResource("classpath:config/castle-config.xml")
 //@PropertySource("classpath:castle.properties")
 public class MainConfig {
 
-    /*@Bean
+    @Bean
     public Quest createQuest() {
         return new Quest();
     }
 
-    @Bean
-    @Scope("prototype")
-    public Knight knight() {
-        Knight knight = new Knight("Lancelot", 30);
-        knight.setQuest(createQuest());
-        return knight;
+    @Bean("lancelot")
+    @Primary
+    public Knight knightLancelot() {
+        Knight lancelot = new Knight("Lancelot", 30);
+        lancelot.setQuest(createQuest());
+        return lancelot;
     }
 
-    @Bean(name = "zamek", initMethod = "build", destroyMethod = "tearDown")
+    @Bean("percival")
+    public Knight knightPercival() {
+        Knight percival = new Knight("Percival", 30);
+        percival.setQuest(createQuest());
+        return percival;
+    }
+
+    /*@Bean(name = "zamek", initMethod = "build", destroyMethod = "tearDown")
     public Castle castle() {
         Castle castle = new Castle(knight());
         castle.setName("East Watch");
