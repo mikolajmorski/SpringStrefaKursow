@@ -8,7 +8,8 @@
         <import resource="classpath:config/castle-config.xml"/>
 
     <bean id="quest" class="com.morski.springstrefakursow.domain.Quest"></bean>
-    <bean id="knight" class="com.morski.springstrefakursow.domain.Knight">
+    <bean id="knight" class="com.morski.springstrefakursow.domain.Knight"
+        scope="prototype">
         <constructor-arg index="0" value="Lancelot"/>
         <constructor-arg index="1" value="30"/>
         <property name="quest" ref="quest"/>

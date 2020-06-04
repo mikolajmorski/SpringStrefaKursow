@@ -11,15 +11,16 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 //@ImportResource("classpath:config/castle-config.xml")
-@PropertySource("classpath:castle.properties")
+//@PropertySource("classpath:castle.properties")
 public class MainConfig {
 
-    @Bean
+    /*@Bean
     public Quest createQuest() {
         return new Quest();
     }
 
     @Bean
+    @Scope("prototype")
     public Knight knight() {
         Knight knight = new Knight("Lancelot", 30);
         knight.setQuest(createQuest());
@@ -31,6 +32,6 @@ public class MainConfig {
         Castle castle = new Castle(knight());
         castle.setName("East Watch");
         return castle;
-    }
+    }*/
 
 }
