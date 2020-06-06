@@ -26,7 +26,7 @@ public class MainConfig {
 
     @Bean("percival")
     public Knight knightPercival() {
-        Knight percival = new Knight("Percival", 30);
+        Knight percival = new Knight("Percival", 25);
         percival.setQuest(createQuest());
         return percival;
     }

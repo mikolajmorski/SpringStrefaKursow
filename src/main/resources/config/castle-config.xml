@@ -12,6 +12,13 @@
     </bean>
 
     <bean id="tournament" class="com.morski.springstrefakursow.domain.Tournament">
-        <property name="knight" ref="percival"/>
+        <property name="knights">
+            <list>
+                <ref bean="percival"/>
+                <ref bean="lancelot"/>
+            </list>
+
+        </property>
+
     </bean>
 </beans>
