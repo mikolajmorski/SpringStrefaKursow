@@ -4,9 +4,9 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="classpath:castle.properties"/>
+    <context:property-placeholder location="classpath:knightRepository.properties"/>
 
-    <bean id="castle" class="com.morski.springstrefakursow.domain.Castle" init-method="build" destroy-method="tearDown">
+    <bean id="castle" class="com.morski.springstrefakursow.domain.repository.KnightRepository" init-method="build" destroy-method="tearDown">
         <constructor-arg index="0" ref="lancelot"/>
         <property name="name" value="East Watch"/>
     </bean>

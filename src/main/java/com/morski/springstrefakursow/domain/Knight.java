@@ -1,10 +1,5 @@
 package com.morski.springstrefakursow.domain;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
 import java.util.Objects;
 
 public class Knight {
@@ -46,7 +41,7 @@ public class Knight {
         return age;
     }
 
-    @Autowired
+
     public void setQuest(Quest quest) {
         System.out.println("Wstawiam zadanie dla rycerza");
         this.quest = quest;

@@ -1,8 +1,9 @@
 package com.morski.springstrefakursow;
 
 
-import com.morski.springstrefakursow.domain.Castle;
-import com.morski.springstrefakursow.domain.Tournament;
+import com.morski.springstrefakursow.domain.repository.KnightRepository;
+import com.morski.springstrefakursow.domain.repository.QuestRepository;
+import com.morski.springstrefakursow.services.QuestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Scope;
@@ -13,17 +14,22 @@ import org.springframework.stereotype.Component;
 public class Starter implements CommandLineRunner {
 
     @Autowired
-    Castle castle;
+    KnightRepository knightRepository;
 
     @Autowired
-    Tournament tournament;
+    QuestRepository questRepository;
+
+    @Autowired
+    QuestService questService;
 
     @java.lang.Override
     public void run(java.lang.String... args) throws Exception {
 
-        System.out.println(castle);
-        tournament.duel();
-        System.out.println(tournament);
 
+        questService.assignRandomQuest("Lancelot");
+        questService.assignRandomQuest("Percival");
+
+        System.out.println(knightRepository);
+        //System.out.println(questRepository);
     }
 }
