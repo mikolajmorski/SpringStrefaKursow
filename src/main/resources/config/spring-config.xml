@@ -2,7 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
         <context:component-scan base-package="com.morski.springstrefakursow"></context:component-scan>
         <import resource="classpath:config/castle-config.xml"/>
@@ -22,4 +23,10 @@
         <property name="quest" ref="quest"/>
     </bean>
 
+    <task:scheduler id="myScheduler" pool-size="10"/>
+
+    <task:scheduled-tasks>
+        <task:scheduled ref="questRepository" method="createRandomQuest" fixed-rate="1000"/>
+    </task:scheduled-tasks>
+    
 </beans>
