@@ -50,7 +50,7 @@ public class QuestRepository {
         descriptions.add("Zabij bande goblinow");
 
         String description = descriptions.get(rand.nextInt(descriptions.size()));
-        System.out.println("Utworzylem zadanie o opisie: " + description);
+        //System.out.println("Utworzylem zadanie o opisie: " + description);
         createQuest(description);
     }
 }
