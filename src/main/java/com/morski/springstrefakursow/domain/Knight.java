@@ -41,6 +41,9 @@ public class Knight {
         return age;
     }
 
+    public String getName() {
+        return this.name;
+    }
 
     public void setQuest(Quest quest) {
         System.out.println("Wstawiam zadanie dla rycerza");
