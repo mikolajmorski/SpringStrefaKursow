@@ -1,6 +1,8 @@
 package com.morski.springstrefakursow.controllers;
 
+import com.morski.springstrefakursow.components.TimeComponent;
 import com.morski.springstrefakursow.domain.Knight;
+import com.morski.springstrefakursow.domain.PlayerInformation;
 import com.morski.springstrefakursow.domain.repository.KnightRepository;
 import com.morski.springstrefakursow.services.KnightService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,12 @@ import java.util.List;
 public class KnightController {
 
     @Autowired
+    TimeComponent timeComponent;
+
+    @Autowired
+    PlayerInformation playerInformation;
+
+    @Autowired
     KnightService knightService;
 
 
@@ -26,7 +34,8 @@ public class KnightController {
     public String getKnights(Model model) {
         List<Knight> allKnights = knightService.getAllKnights();
         model.addAttribute("knights", allKnights);
-        model.addAttribute("hello", "Witaj swiecie");
+        model.addAttribute("timecomponent", timeComponent);
+        model.addAttribute("playerinformation", playerInformation);
         return "knights";
     }
 
@@ -34,13 +43,16 @@ public class KnightController {
     public String getKnight(@RequestParam("id") Integer id, Model model) {
         Knight knight = knightService.getKnight(id);
         model.addAttribute("knight", knight);
+        model.addAttribute("timecomponent", timeComponent);
+        model.addAttribute("playerinformation", playerInformation);
         return "knight";
     }
 
     @RequestMapping("/newknight")
     public String createKnight(Model model) {
         model.addAttribute("knight", new Knight());
-
+        model.addAttribute("timecomponent", timeComponent);
+        model.addAttribute("playerinformation", playerInformation);
         return "knightform";
     }
 
