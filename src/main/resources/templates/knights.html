@@ -23,6 +23,7 @@
             <td th:text="${knight.getName()}"></td>
             <td th:text="${knight.getLevel()}"></td>
             <td><a th:href="${'/knight?id='+knight.id}">Podglad</a> </td>
+            <td><a th:href="${'/knight/delete/'+knight.id}">Usun</a></td>
         </tr>
         </tbody>
     </table>
