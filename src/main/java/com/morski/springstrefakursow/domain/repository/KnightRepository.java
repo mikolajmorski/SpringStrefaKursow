@@ -49,4 +49,7 @@ public class KnightRepository {
                 '}';
     }
 
+    public void createKnight(Knight knight) {
+        knights.put(knight.getName(), knight);
+    }
 }

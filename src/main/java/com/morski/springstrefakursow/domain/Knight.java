@@ -10,9 +10,6 @@ public class Knight {
     private Quest quest;
 
     public Knight() {
-        this.name = "Lancelot";
-        this.age = 30;
-
     }
 
     public Knight( String name, int age) {
@@ -39,6 +36,10 @@ public class Knight {
 
     public int getAge() {
         return age;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {

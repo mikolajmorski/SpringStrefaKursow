@@ -20,4 +20,7 @@ public class KnightService {
     }
 
 
+    public void saveKnight(Knight knight) {
+        knightRepository.createKnight(knight);
+    }
 }
