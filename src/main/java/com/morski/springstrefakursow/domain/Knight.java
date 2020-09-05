@@ -4,9 +4,11 @@ import java.util.Objects;
 
 public class Knight {
 
+    private int id;
     private String name ;
-
     private int age ;
+    private int level;
+
     private Quest quest;
 
     public Knight() {
@@ -15,6 +17,7 @@ public class Knight {
     public Knight( String name, int age) {
         this.age = age;
         this.name = name;
+        this.level = 1;
     }
 
     @Override
@@ -28,6 +31,14 @@ public class Knight {
     @Override
     public int hashCode() {
         return Objects.hash(age);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setAge(int age) {
@@ -49,6 +60,14 @@ public class Knight {
     public void setQuest(Quest quest) {
         System.out.println("Wstawiam zadanie dla rycerza");
         this.quest = quest;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     @Override
