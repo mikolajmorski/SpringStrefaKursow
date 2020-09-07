@@ -12,6 +12,10 @@ public class Knight {
 
     private int id;
 
+    public Quest getQuest() {
+        return quest;
+    }
+
     @NotNull
     @Size(min=2, max = 40)
     private String name ;
@@ -72,7 +76,7 @@ public class Knight {
     }
 
     public void setQuest(Quest quest) {
-        System.out.println("Wstawiam zadanie dla rycerza");
+        quest.setStarted(true);
         this.quest = quest;
     }
 

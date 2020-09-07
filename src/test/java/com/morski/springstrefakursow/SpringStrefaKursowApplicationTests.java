@@ -1,7 +1,7 @@
 package com.morski.springstrefakursow;
 
-import com.morski.springstrefakursow.domain.repository.KnightRepository;
 import com.morski.springstrefakursow.domain.Knight;
+import com.morski.springstrefakursow.domain.repository.KnightRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,7 +14,7 @@ class SpringStrefaKursowApplicationTests {
 	@Autowired
 	Knight knight;
 	@Autowired
-    KnightRepository knightRepository;
+	KnightRepository knightRepository;
 
 	@Test
 	void contextLoads() {

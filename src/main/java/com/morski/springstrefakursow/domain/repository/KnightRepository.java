@@ -1,6 +1,7 @@
 package com.morski.springstrefakursow.domain.repository;
 
 import com.morski.springstrefakursow.domain.Knight;
+import com.morski.springstrefakursow.utils.Ids;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -19,19 +20,11 @@ public class KnightRepository {
 
     public void createKnight(String name, int age) {
         Knight newKnight = new Knight(name, age);
-        newKnight.setId(getNewId());
+        newKnight.setId(Ids.generateNewId(knights.keySet()));
         knights.put(newKnight.getId(), newKnight);
     }
 
-    private int getNewId() {
-        if(knights.isEmpty()) {
-            return 0;
-        }
-        else {
-            Integer max = knights.keySet().stream().max(Integer::max).get();
-            return max+1;
-        }
-    }
+
 
     public Knight getKnight(Integer id) {
         return knights.get(id);
@@ -68,7 +61,7 @@ public class KnightRepository {
     }
 
     public void createKnight(Knight knight) {
-        knights.put(getNewId(), knight);
+        knights.put(Ids.generateNewId(knights.keySet()), knight);
     }
 
 
