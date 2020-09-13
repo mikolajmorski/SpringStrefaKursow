@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 public class Quest {
 
+    private int id;
     private String decription;
     private int reward = 100;
     private int lenght =  30000;
@@ -13,7 +14,8 @@ public class Quest {
     private boolean started = false;
     private boolean completed = false;
 
-    public Quest(String decription) {
+    public Quest(int id, String decription) {
+        this.id = id;
         this.decription = decription;
     }
 
@@ -60,5 +62,13 @@ public class Quest {
 
     public void setCompleted(boolean ended) {
         this.completed = ended;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

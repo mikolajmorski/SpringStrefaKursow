@@ -30,4 +30,8 @@ public class KnightService {
     public void deleteKnight(Integer id) {
         knightRepository.deleteKnight(id);
     }
+
+    public void update(Knight knight) {
+        knightRepository.update(knight.getId(), knight);
+    }
 }

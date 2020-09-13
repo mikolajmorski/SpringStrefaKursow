@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -31,5 +32,13 @@ public class QuestController {
         model.addAttribute("notStartedQuests", notStartedQuests);
         //Quest quest = new Quest("Testowe zadanie")
         return "assignQuest";
+    }
+
+    @RequestMapping(value = "/assignQuest", method = RequestMethod.POST)
+    public String assignQuest(Knight knight) {
+        knightService.update(knight);
+        Quest quest = knight.getQuest();
+        questService.update(quest);
+        return "redirect:/knights";
     }
 }

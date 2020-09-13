@@ -65,4 +65,7 @@ public class KnightRepository {
     }
 
 
+    public void update(int id, Knight knight) {
+        knights.put(id, knight);
+    }
 }

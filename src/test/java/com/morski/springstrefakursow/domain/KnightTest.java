@@ -10,7 +10,7 @@ public class KnightTest {
     public void testIfQuestMarkedAsStarted() {
 
         Knight knight = new Knight("Percival", 25);
-        Quest quest = new Quest("Testowe zadanie");
+        Quest quest = new Quest(1, "Testowe zadanie");
 
         knight.setQuest(quest);
         assertTrue(knight.getQuest().isStarted());
