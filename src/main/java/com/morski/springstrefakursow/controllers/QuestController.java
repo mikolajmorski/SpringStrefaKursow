@@ -2,12 +2,14 @@ package com.morski.springstrefakursow.controllers;
 
 
 import com.morski.springstrefakursow.domain.Knight;
+import com.morski.springstrefakursow.domain.PlayerInformation;
 import com.morski.springstrefakursow.domain.Quest;
 import com.morski.springstrefakursow.services.KnightService;
 import com.morski.springstrefakursow.services.QuestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +25,9 @@ public class QuestController {
     @Autowired
     QuestService questService;
 
+    @Autowired
+    PlayerInformation playerInformation;
+
 
     @RequestMapping("/assignQuest")
     public String assignQuest(@RequestParam("knightId") Integer id, Model model) {
@@ -35,10 +40,25 @@ public class QuestController {
     }
 
     @RequestMapping(value = "/assignQuest", method = RequestMethod.POST)
-    public String assignQuest(Knight knight) {
+    public String assignQuest(Knight knight, BindingResult result) {
         knightService.update(knight);
-        Quest quest = knight.getQuest();
-        questService.update(quest);
+        //Quest quest = knight.getQuest();
+        //questService.update(quest);
+        return "redirect:/knights";
+    }
+
+    @RequestMapping(value = "/checkQuests")
+    public String checkQuests() {
+
+        List<Knight> allKnights = knightService.getAllKnights();
+        allKnights.forEach(knight -> {
+            knight.getQuest().isCompleted();
+        });
+
+        int currentGold = playerInformation.getGold();
+
+        playerInformation.setGold(currentGold + knightService.collectRewards());
+
         return "redirect:/knights";
     }
 }

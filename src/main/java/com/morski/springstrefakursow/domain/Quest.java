@@ -1,15 +1,19 @@
 package com.morski.springstrefakursow.domain;
 
 
+import org.apache.tomcat.jni.Local;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 
 public class Quest {
 
     private int id;
     private String decription;
     private int reward = 100;
-    private int lenght =  30000;
+    protected int lenghtInSeconds =  3;
+    protected LocalDateTime startDate;
 
     private boolean started = false;
     private boolean completed = false;
@@ -41,11 +45,11 @@ public class Quest {
     }
 
     public int getLenght() {
-        return lenght;
+        return lenghtInSeconds;
     }
 
     public void setLenght(int lenght) {
-        this.lenght = lenght;
+        this.lenghtInSeconds = lenght;
     }
 
     public boolean isStarted() {
@@ -53,15 +57,23 @@ public class Quest {
     }
 
     public void setStarted(boolean started) {
+        if(started) {
+            this.startDate =  LocalDateTime.now();
+        }
         this.started = started;
     }
 
     public boolean isCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(boolean ended) {
-        this.completed = ended;
+        if(this.completed) {
+            return this.completed;
+        }
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime questEndDate = this.startDate.plusSeconds(this.lenghtInSeconds);
+        boolean isAfter = now.isAfter(questEndDate);
+        if(isAfter) {
+            this.completed = true;
+        }
+        return isAfter;
     }
 
     public int getId() {
@@ -71,4 +83,5 @@ public class Quest {
     public void setId(int id) {
         this.id = id;
     }
+
 }
