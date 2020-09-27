@@ -9,12 +9,16 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 @Component
 public class KnightService {
 
     @Autowired
     KnightRepository knightRepository;
+
+    @Autowired
+    PlayerInformation playerInformation;
 
 
     public List<Knight> getAllKnights() {
@@ -38,14 +42,34 @@ public class KnightService {
     }
 
     public int collectRewards() {
-        int sum = knightRepository.getAllKnights().stream().filter(knight -> knight.getQuest().isCompleted())
+        int sum = knightRepository.getAllKnights().stream().filter(knightPredicate())
                 .mapToInt(knight -> knight.getQuest().getReward())
                 .sum();
 
-        knightRepository.getAllKnights().stream().filter(knight -> knight.getQuest().isCompleted())
+        knightRepository.getAllKnights().stream().filter(knightPredicate())
                 .forEach(knight -> {
                     knight.setQuest(null);
                 });
         return sum;
+    }
+
+    private Predicate<Knight> knightPredicate() {
+        return knight -> {
+            if (knight.getQuest() != null)
+                return knight.getQuest().isCompleted();
+            return false;
+        };
+    }
+
+    public void getMyGold() {
+
+        List<Knight> allKnights = getAllKnights();
+        allKnights.forEach(knight -> {
+            if(knight.getQuest() != null)
+                knight.getQuest().isCompleted();
+        });
+        int currentGold = playerInformation.getGold();
+
+        playerInformation.setGold(currentGold + collectRewards());
     }
 }
