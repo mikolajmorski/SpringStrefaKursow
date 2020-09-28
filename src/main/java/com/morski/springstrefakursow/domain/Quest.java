@@ -5,10 +5,14 @@ import org.apache.tomcat.jni.Local;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class Quest {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String decription;
     private int reward = 100;
@@ -17,6 +21,9 @@ public class Quest {
 
     private boolean started = false;
     private boolean completed = false;
+
+    public Quest() {
+    }
 
     public Quest(int id, String decription) {
         this.id = id;
