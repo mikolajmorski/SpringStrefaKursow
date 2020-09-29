@@ -1,7 +1,7 @@
 package com.morski.springstrefakursow;
 
 import com.morski.springstrefakursow.domain.Knight;
-import com.morski.springstrefakursow.domain.repository.KnightRepository;
+import com.morski.springstrefakursow.domain.repository.InMemoryKnightRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,7 +14,7 @@ class SpringStrefaKursowApplicationTests {
 	@Autowired
 	Knight knight;
 	@Autowired
-	KnightRepository knightRepository;
+    InMemoryKnightRepository inMemoryKnightRepository;
 
 	@Test
 	void contextLoads() {
@@ -22,7 +22,7 @@ class SpringStrefaKursowApplicationTests {
 	@Test
 	public void testCastle() {
 		String expected = "Znajduje sie tu zamek o nazwie: Castle Black. Zamieszkały przez rycerza: Rycerz o imieniu Lancelot (30). Zadanie: Uratuj ksiezniczke";
-		assertEquals(expected, knightRepository.toString());
+		assertEquals(expected, inMemoryKnightRepository.toString());
 	}
 
 

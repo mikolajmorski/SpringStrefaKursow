@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Component
 @Entity
 public class PlayerInformation {
 
@@ -27,4 +26,5 @@ public class PlayerInformation {
     }
 
     private int gold = 0;
+
 }

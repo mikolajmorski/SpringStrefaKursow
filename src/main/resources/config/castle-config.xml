@@ -6,7 +6,7 @@
 
     <context:property-placeholder location="classpath:knightRepository.properties"/>
 
-    <bean id="castle" class="com.morski.springstrefakursow.domain.repository.KnightRepository" init-method="build" destroy-method="tearDown">
+    <bean id="castle" class="com.morski.springstrefakursow.domain.repository.InMemoryKnightRepository" init-method="build" destroy-method="tearDown">
         <constructor-arg index="0" ref="lancelot"/>
         <property name="name" value="East Watch"/>
     </bean>

@@ -4,6 +4,7 @@ package com.morski.springstrefakursow.controllers;
 import com.morski.springstrefakursow.domain.Knight;
 import com.morski.springstrefakursow.domain.PlayerInformation;
 import com.morski.springstrefakursow.domain.Quest;
+import com.morski.springstrefakursow.domain.repository.PlayerInformationRepository;
 import com.morski.springstrefakursow.services.KnightService;
 import com.morski.springstrefakursow.services.QuestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class QuestController {
     QuestService questService;
 
     @Autowired
-    PlayerInformation playerInformation;
+    PlayerInformationRepository playerInformationRepository;
 
 
     @RequestMapping("/assignQuest")

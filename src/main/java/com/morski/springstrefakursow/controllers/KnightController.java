@@ -3,7 +3,7 @@ package com.morski.springstrefakursow.controllers;
 import com.morski.springstrefakursow.components.TimeComponent;
 import com.morski.springstrefakursow.domain.Knight;
 import com.morski.springstrefakursow.domain.PlayerInformation;
-import com.morski.springstrefakursow.domain.repository.KnightRepository;
+import com.morski.springstrefakursow.domain.repository.PlayerInformationRepository;
 import com.morski.springstrefakursow.services.KnightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,7 +24,7 @@ public class KnightController {
     TimeComponent timeComponent;
 
     @Autowired
-    PlayerInformation playerInformation;
+    PlayerInformationRepository playerInformationRepository;
 
     @Autowired
     KnightService knightService;
@@ -35,6 +33,7 @@ public class KnightController {
     @RequestMapping("/knights")
     public String getKnights(Model model) {
         List<Knight> allKnights = knightService.getAllKnights();
+        PlayerInformation playerInformation = playerInformationRepository.getFirts();
         model.addAttribute("knights", allKnights);
         model.addAttribute("timecomponent", timeComponent);
         model.addAttribute("playerinformation", playerInformation);
@@ -44,6 +43,7 @@ public class KnightController {
     @RequestMapping("/knight")
     public String getKnight(@RequestParam("id") Integer id, Model model) {
         Knight knight = knightService.getKnight(id);
+        PlayerInformation playerInformation = playerInformationRepository.getFirts();
         model.addAttribute("knight", knight);
         model.addAttribute("timecomponent", timeComponent);
         model.addAttribute("playerinformation", playerInformation);
@@ -52,6 +52,7 @@ public class KnightController {
 
     @RequestMapping("/newknight")
     public String createKnight(Model model) {
+        PlayerInformation playerInformation = playerInformationRepository.getFirts();
         model.addAttribute("knight", new Knight());
         model.addAttribute("timecomponent", timeComponent);
         model.addAttribute("playerinformation", playerInformation);

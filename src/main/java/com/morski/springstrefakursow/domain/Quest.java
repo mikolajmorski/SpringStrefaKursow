@@ -30,6 +30,11 @@ public class Quest {
         this.decription = decription;
     }
 
+    public Quest(String decription) {
+        this.id = id;
+        this.decription = decription;
+    }
+
     @Override
     public String toString() {
         return decription;
