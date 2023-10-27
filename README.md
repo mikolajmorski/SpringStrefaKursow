@@ -1,4 +1,4 @@
-# SpringStrefaKursow
+# Spring Strefa Kursow
 Spring Boot project for Strefa Kursow
 
 https://strefakursow.pl/kursy/programowanie/kurs_spring_framework_od_podstaw.html
